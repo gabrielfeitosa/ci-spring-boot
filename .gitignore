@@ -1,0 +1,6 @@
+*.class
+target/
+.settings/
+.project
+.classpath
+hs_err_pid*

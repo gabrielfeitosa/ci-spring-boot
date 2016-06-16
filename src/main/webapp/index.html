@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myTask">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>My task manager</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container" ng-controller="TaskController">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="list">
+                    <h1>My Tasks</h1>
+                    <form ng-submit="add()">
+                        <input type="text" class="form-control" placeholder="Add task" ng-model="task.description">
+                    </form>
+                    <button id="btnDelete" ng-click="delete()" class="btn btn-danger">Delete archived</button>
+                    <hr>
+                    <ul class="list-unstyled">
+                        <li class="ui-state-default" ng-repeat="t in list">
+                            <div class="checkbox">
+                                <label ng-class="{filed: t.filed}">
+                                    <input type="checkbox" ng-model="t.filed" ng-click="filed(t)">{{t.description}}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="footer">
+                        <strong>Total of Tasks <span class="count-todos">{{list.length}}</span></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,11 +1,12 @@
 [![Build Status](https://travis-ci.org/gabrielfeitosa/ci-spring-boot.svg?branch=master)](https://travis-ci.org/gabrielfeitosa/ci-spring-boot)
 # ci-spring-boot
+
 Example of Integration Continuous using Travis and Spring Boot.
 
 This example is a simulation of a Task Manager.
 
 ## Technologies
-___
+
 * [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Maven](https://maven.apache.org/)
 * [Spring Boot](http://projects.spring.io/spring-boot/)
@@ -14,7 +15,6 @@ ___
 * [Heroku](https://www.heroku.com/)
 
 ## Configuration
-___
 
 > You need to have installed Java and Maven
 
@@ -40,7 +40,7 @@ In your new listen, you need to configure the environment variable $HEROKU_API_K
 You need to change the __deploy>app__ into __.travis.yml__ to the created same heroku app
 
 ## Run
-___
+
 ##### Dev Profile
 
 ```sh

@@ -35,9 +35,9 @@ Into your new app add a Add-ons Postgresql database. By default, the environment
 
 Create an account and put your repository to be observed by travis. 
 
-In your new listen, you need to configure the environment variable $HEROKU_API_KEY or put directly into a __.travis.yml__ (it's not secure). 
+In your new listener, you need to configure the environment variable $HEROKU_API_KEY or put directly into a __.travis.yml__ (it's not secure). 
 
-You need to change the __deploy>app__ into __.travis.yml__ to the created same heroku app
+You need to change the __deploy>app__ into __.travis.yml__ to the same name of heroku app.
 
 ## Run
 

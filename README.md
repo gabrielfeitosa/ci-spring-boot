@@ -65,7 +65,7 @@ $ docker build -t mytask .
 ```
 
 ```sh
-docker run -it -p 8080:8080 --name mytask-container mytask
+$ docker run -it -p 8080:8080 --name mytask-container mytask
 ```
 
 ## Run with docker-maven-plugin
@@ -74,6 +74,9 @@ docker run -it -p 8080:8080 --name mytask-container mytask
 $  mvn clean package docker:build --batch-mode release:update-versions  
 ```
 
+```sh
+$ docker run -it -p 8080:8080 --name mytask-container mytask
+```
 
 
 

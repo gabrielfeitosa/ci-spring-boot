@@ -13,6 +13,7 @@ This example is a simulation of a Task Manager.
 * [AngularJS](https://angularjs.org/)
 * [Travis CI](https://travis-ci.org/)
 * [Heroku](https://www.heroku.com/)
+* [Docker](http://docker.com/)
 
 ## Configuration
 
@@ -52,6 +53,29 @@ $ mvn spring-boot:run
 ```sh
 $ mvn spring-boot:run -Dspring.profiles.active=prod
 ```
+
+## Run with Docker Command Line
+
+```sh
+$ mvn clean package  
+```
+
+```sh
+$ docker build -t mytask .  
+```
+
+```sh
+docker run -it -p 8080:8080 --name mytask-container mytask
+```
+
+## Run with docker-maven-plugin
+
+```sh
+$  mvn clean package docker:build --batch-mode release:update-versions  
+```
+
+
+
 
 License
 ----

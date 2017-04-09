@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.gabrielfeitosa</groupId>
 	<artifactId>ci-spring-boot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.8-SNAPSHOT</version>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -13,8 +12,15 @@
 		<version>1.3.5.RELEASE</version>
 	</parent>
 
+    <scm>
+        <url>https://github.com/gabrielfeitosa/docker-spring-boot</url>
+        <connection>scm:git:git://github.com/gabrielfeitosa/docker-spring-boot.git</connection>
+        <developerConnection>scm:git:git@github.com/gabrielfeitosa/docker-spring-boot.git</developerConnection>
+    </scm>
+
 	<properties>
 		<java.version>1.8</java.version>
+        <spring.profile>dev</spring.profile>
 	</properties>
 
 	<dependencies>
@@ -46,14 +52,37 @@
 
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+<build>
+    <finalName>mytask</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.4.13</version>
+            <configuration>
+                <imageName>mytask</imageName>
+                <baseImage>frolvlad/alpine-oraclejdk8:slim</baseImage>
+                <entryPoint>["sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /${project.build.finalName}.jar --spring.profiles.active=${spring.profile}"]
+                </entryPoint>
+                <resources>
+                    <resource>
+                        <targetPath>/</targetPath>
+                        <directory>${project.build.directory}</directory>
+                        <include>${project.build.finalName}.jar</include>
+                    </resource>
+                </resources>
+                <imageTags>
+                    <imageTag>${project.version}</imageTag>
+                    <imageTag>latest</imageTag>
+                </imageTags>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 
 	<repositories>
 		<repository>

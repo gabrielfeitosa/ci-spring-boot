@@ -91,7 +91,7 @@
 		</repository>
 		<repository>
 			<id>postgresql</id>
-			<url>http://mvnrepository.com/artifact/org.postgresql/postgresql</url>
+			<url>https://mvnrepository.com/artifact/org.postgresql/postgresql</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
